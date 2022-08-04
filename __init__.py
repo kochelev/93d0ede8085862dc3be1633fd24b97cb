@@ -1,1 +1,1 @@
-__all__ = ["q_math"]
+__all__ = ["q_math", "qmath"]
