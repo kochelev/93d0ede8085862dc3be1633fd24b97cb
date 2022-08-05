@@ -1,12 +1,10 @@
-# TODO: make possible to use phase_shift
-
-#%%
-
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, Aer, execute
+
 
 def hello():
     print('Hello, it\'s me!')
 
+    
 def cmp_qq(n_1, type, n_2):
     
     # '''Compares digits stored in qubits of input 1 and input 2.
@@ -129,44 +127,6 @@ def cmp_qq(n_1, type, n_2):
 
     return circuit
 
-#%%
-
-qr = QuantumRegister(11)
-cr = ClassicalRegister(1)
-qc = QuantumCircuit(qr,cr)
-
-input_1 = qr[0:4]
-input_2 = qr[4:10]
-result = qr[10]
-
-i1 = 15  # max 15
-i2 = 17  # max 63
-i1_operation_i2 = '<='
-
-bits_i1 = list(reversed(bin(i1)[2:]))
-bits_i2 = list(reversed(bin(i2)[2:]))
-
-for i, bit in enumerate(bits_i1):
-    if bit == '1':
-        qc.x(input_1[i])
-for i, bit in enumerate(bits_i2):
-    if bit == '1':
-        qc.x(input_2[i])
-
-function = cmp_qq(len(input_1), i1_operation_i2, len(input_2)).to_gate()
-function.label = 'Compare'
-
-qc.append(function, [*input_1, *input_2, result])
-qc.measure(result,cr)
-# qc.decompose(gates_to_decompose=['Compare']).draw()
-
-shots = 10
-simulator = Aer.get_backend('qasm_simulator')
-result = execute(qc, backend = simulator, shots = shots).result()
-counts = result.get_counts()
-
-print(counts)
-# %%
 
 def cmp_qd(n, type, number):
     
@@ -262,29 +222,3 @@ def cmp_qd(n, type, number):
     actions[type]()
     
     return circuit
-
-qr = QuantumRegister(5)
-cr = ClassicalRegister(1)
-qc = QuantumCircuit(qr,cr)
-
-input = qr[0:4]
-result = qr[4]
-
-qc.x(input[0])
-qc.x(input[1])
-qc.x(input[2])
-# qc.x(input[3])
-
-function = cmp_qd(len(input), '>', 3).to_gate()
-function.label = 'Compare'
-
-qc.append(function, [*input, result])
-qc.measure(result, cr)
-# qc.decompose(gates_to_decompose=['Compare']).draw()
-
-shots = 10
-simulator = Aer.get_backend('qasm_simulator')
-result = execute(qc, backend = simulator, shots = shots).result()
-counts = result.get_counts()
-
-print(counts)
