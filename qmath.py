@@ -1,26 +1,15 @@
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, Aer, execute
 
 
-def hello():
-    print('Hello, it\'s me!')
+def cmp_qq(n_1, operation, n_2):
 
-    
-def cmp_qq(n_1, type, n_2):
-    
-    # '''Compares digits stored in qubits of input 1 and input 2.
-    # Requires (n_1 + n_2 + 1) qubits if switches qubit as a result (phase_shift = False).
-    # Requires (n_1 + n_2) qubits if shifts phase as a result (phase_shift = True).
-    # Operation types (type): "=", "!=", ">", ">=", "<", "<=".
-    # - n_1 — first input qubits
-    # - n_2 — second input qubits
-    # - 1 — qubit for result (phase_shift = False or doesn\'t set)'''
-
-    '''Compares digits stored in qubits of input 1 and input 2.
-    Operation types (type): "=", "!=", ">", ">=", "<", "<="
+    '''
+    Compares digits stored in qubits of input 1 and input 2.
+    Operation types: "=", "!=", ">", ">=", "<", "<="
     Requires (n_1 + n_2 + 1) qubits:
     - n_1 — first input qubits
     - n_2 — second input qubits
-    - 1 — qubit for the result'''
+    - 1 — qubit for the result
+    '''
     
     def if_not_equal(inp_1, inp_2):
 
@@ -117,24 +106,26 @@ def cmp_qq(n_1, type, n_2):
 
     result = qubits[n_1 + n_2]
 
-    if type == '=' or type == '<=' or type == '>=':
+    if operation == '=' or operation == '<=' or operation == '>=':
         circuit.x(result)
     
-    if type == '<' or type == '>=':
-        actions[type](input_2, input_1)
+    if operation == '<' or operation == '>=':
+        actions[operation](input_2, input_1)
     else:
-        actions[type](input_1, input_2)
+        actions[operation](input_1, input_2)
 
     return circuit
 
 
-def cmp_qd(n, type, number):
+def cmp_qd(n, operation, number):
     
-    '''Compares digit stored in qubits of input with exact digit.
-    Operation types (type): "=", "!=", ">", ">=", "<", "<="
+    '''
+    Compares digit stored in qubits of input with exact digit.
+    Operation types: "=", "!=", ">", ">=", "<", "<="
     Requires (n + 1) qubits:
     - n — input qubits
-    - 1 — qubit for result'''
+    - 1 — qubit for result
+    '''
 
     def if_equal():
 
@@ -216,9 +207,9 @@ def cmp_qd(n, type, number):
     input = qubits[0:n]
     result = qubits[n]
 
-    if type == '!=' or type == '>=' or type == '>':
+    if operation == '!=' or operation == '>=' or operation == '>':
         circuit.x(result)
     
-    actions[type]()
+    actions[operation]()
     
     return circuit
