@@ -4,6 +4,9 @@
 
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, Aer, execute
 
+def hello():
+    print('Hello, it\'s me!')
+
 def cmp_qq(n_1, type, n_2):
     
     # '''Compares digits stored in qubits of input 1 and input 2.
