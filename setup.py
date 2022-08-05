@@ -3,6 +3,7 @@ from setuptools import setup, find_packages
 
 import covertutils
 import qmath
+import test
 
 import unittest
 
