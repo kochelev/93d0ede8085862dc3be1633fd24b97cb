@@ -1,4 +1,4 @@
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
+from qiskit import QuantumRegister, QuantumCircuit
 
 
 def cmp_qq(n_1, operation, n_2):
