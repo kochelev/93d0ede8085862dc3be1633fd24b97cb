@@ -1,2 +1,0 @@
-def ff():
-    print('ff')
