@@ -1,11 +1,11 @@
-/.github
 /.vscode
 /.idea
 /.ipynb_checkpoints
 /venv
 /__pycache__
 /app/__pycache__
+.DS_Store
 .coverage
 .env
 *.code-workspace
-.DS_Store
+

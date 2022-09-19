@@ -1,7 +1,7 @@
-# Quantum Libraries
+# Qiskit Extensions
 
-Link: 
+Readme file in progress!
 
-$$
-x = y^2
-$$
+```shell
+coverage run -m unittest
+```

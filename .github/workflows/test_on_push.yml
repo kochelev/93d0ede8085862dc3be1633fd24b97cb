@@ -12,11 +12,11 @@ jobs:
     - uses: actions/checkout@master
     - uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.10'
         architecture: 'x64'
     - name: Install requirements
-      run: pip install -r app/requirements.txt
+      run: pip install -r requirements.txt
     - name: Run tests
-      run: coverage run --source=./app -m unittest discover -s app -p 'test_*.py'
+      run: coverage run -m unittest
     - name: Tests report
       run: coverage report

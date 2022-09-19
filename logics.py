@@ -1,13 +1,14 @@
 from qiskit import QuantumRegister, QuantumCircuit
 
+
 def logic_operation(n, operation):
 
-    '''
+    """
     Available operation types: "and", "or" and "xor".
     Required (n + 1) qubits:
     -- [:n] — input
     -- [n] - result
-    '''
+    """
     
     qr = QuantumRegister(n + 1)
     qc = QuantumCircuit(qr)
