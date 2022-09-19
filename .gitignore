@@ -1,4 +1,11 @@
-.github
-__pycache__
-.ipynb_checkpoints
+/.github
+/.vscode
+/.idea
+/.ipynb_checkpoints
+/venv
+/__pycache__
+/app/__pycache__
+.coverage
+.env
+*.code-workspace
 .DS_Store
