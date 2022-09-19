@@ -6,29 +6,29 @@ def logic_operation(n, operation):
     """
     Available operation types: "and", "or" and "xor".
     Required (n + 1) qubits:
-    -- [:n] — input
-    -- [n] - result
+    -- [:n] — input qubits
+    -- [n] — result qubit
     """
     
     qr = QuantumRegister(n + 1)
     qc = QuantumCircuit(qr)
 
-    X = qr[:n]
+    xs = qr[:n]
     result = qr[-1]
 
     def __and():
-        qc.mcx(X, result)
+        qc.mcx(xs, result)
     
     def __or():
-        qc.x([*X, result])
-        qc.mcx(X, result)
-        qc.x(X)
+        qc.x([*xs, result])
+        qc.mcx(xs, result)
+        qc.x(xs)
 
     def __xor():
-        qc.x([*X, result])
-        qc.mcx(X, result)
-        qc.x(X)
-        qc.mcx(X, result)
+        qc.x([*xs, result])
+        qc.mcx(xs, result)
+        qc.x(xs)
+        qc.mcx(xs, result)
 
     actions = {
         'and': __and,
