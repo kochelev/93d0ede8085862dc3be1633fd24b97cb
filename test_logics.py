@@ -1,10 +1,10 @@
 import unittest
 from qiskit import *
 from qiskit_aer import *
-from logics import logic_operation
+from qiskit_logics import logic_operation
 
 
-def construct_circuit(operation, vrb_string):
+def circuit_constructor(operation, vrb_string):
 
     qr = QuantumRegister(4)
     cr = ClassicalRegister(1)
@@ -34,19 +34,19 @@ class TestAND(unittest.TestCase):
     def test__positive_000(self):
 
         expected = {'0': 100}
-        counts = construct_circuit('and', '000')
+        counts = circuit_constructor('and', '000')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_010(self):
 
         expected = {'0': 100}
-        counts = construct_circuit('and', '010')
+        counts = circuit_constructor('and', '010')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_111(self):
 
         expected = {'1': 100}
-        counts = construct_circuit('and', '111')
+        counts = circuit_constructor('and', '111')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
 
@@ -55,20 +55,20 @@ class TestOR(unittest.TestCase):
     def test__positive_000(self):
 
         expected = {'0': 100}
-        counts = construct_circuit('or', '000')
+        counts = circuit_constructor('or', '000')
 
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_010(self):
 
         expected = {'1': 100}
-        counts = construct_circuit('or', '010')
+        counts = circuit_constructor('or', '010')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_111(self):
 
         expected = {'1': 100}
-        counts = construct_circuit('or', '111')
+        counts = circuit_constructor('or', '111')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
 
@@ -77,19 +77,18 @@ class TestXOR(unittest.TestCase):
     def test__positive_000(self):
 
         expected = {'0': 100}
-        counts = construct_circuit('xor', '000')
+        counts = circuit_constructor('xor', '000')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_010(self):
 
         expected = {'1': 100}
-        counts = construct_circuit('xor', '010')
+        counts = circuit_constructor('xor', '010')
 
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
 
     def test__positive_111(self):
 
         expected = {'0': 100}
-        counts = construct_circuit('xor', '111')
+        counts = circuit_constructor('xor', '111')
         self.assertDictEqual(counts, expected, 'Should be %s' % str(expected))
-
