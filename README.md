@@ -1,4 +1,4 @@
-# Qiskit Extensions
+# Qiskit extensions
 
 Репозиторий **qiskit_extensions** содержит набор «авторских» 
 расширений для библиотеки **qiskit**.
